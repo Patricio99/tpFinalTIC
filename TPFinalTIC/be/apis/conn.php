@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 
 $HostName = "localhost";
 $HostUser = "root";
-$HostPass = "";
+$HostPass = "root";
 $DatabaseName = "dbtpfinaltic";
 $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 ?>

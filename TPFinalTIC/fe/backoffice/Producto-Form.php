@@ -1,13 +1,13 @@
 <?php
-function validData() {
-  // define variables and set to empty values
-$idCategoria = $Codigo = $Nombre = $Precio = $Destacado = $Descripcion = $Imagen = "";
 
+$idCategoria = $Codigo = $Nombre = $Precio = $Destacado = $Descripcion = $Imagen = "";
+$booleano = false;
 
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
+
   return $data;
 }
 
@@ -16,16 +16,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $Codigo = test_input($_POST["Codigo"]);
   $Nombre = test_input($_POST["Nombre"]);
   $Precio = test_input($_POST["Precio"]);
-  $Destacado = test_input($_POST["Destacado"]);
   $Descripcion = test_input($_POST["Descripcion"]);
-  $Imagen = test_input($_POST["Imagen"]);
+  $Imagen = $_FILES["Imagen"]["tmp_name"];
+  $Destacado = $_POST["Destacado"];
+  $booleano = true;
+
+  if ($Destacado) {
+      $Destacado = 1;
+  }
+  else {
+    $Destacado = 0;
+  }
 }
 
-
-
-
-  return true;
-}
 include '../../be/apis/conn.php';
 
 if (!empty($_POST)) {
@@ -38,14 +41,15 @@ if (!empty($_POST)) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    if(validData()) {
+    if($booleano) {
       // lo guardo en la bd
       $sql = "INSERT INTO Productos (idCategoria, Codigo, Nombre, Precio, Destacado, Descripcion, Imagen)
-      VALUES ('John', 'Doe', 'john@example.com')";
+      VALUES (".$idCategoria.", ".$Codigo.", '" . $Nombre . "', " . $Precio . ", " . $Destacado . ", '" . $Descripcion. "', '" . $Imagen . "')";
 
+echo $sql;
       $result = $conn->query($sql);
 
-      header('Location: index.php');
+      header('Location: products.php');
     } else {
       // show error to users
     }
@@ -65,7 +69,7 @@ if (!empty($_POST)) {
 		<link rel="stylesheet" href="../node_modules\tether\dist\css\tether.css"/>
   </head>
   <body>
-    <form method="post" action="<?=$_SERVER['PHP_SELF']?>">
+    <form method="post" action="<?=$_SERVER['PHP_SELF']?>" enctype="multipart/form-data">
       <div class="form-group">
         <label for="formGroupExampleInput2">idCategoría</label>
         <input type="text" class="form-control" name="idCategoria" placeholder="idCategoría">
@@ -84,7 +88,7 @@ if (!empty($_POST)) {
       </div>
       <div>
       <label class="custom-control custom-checkbox">
-        <input type="checkbox" name="Destacado" class="custom-control-input">
+        <input type="checkbox" name="Destacado" class="custom-control-input" value="true">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Destacado</span>
       </label>
