@@ -1,1 +1,7 @@
+.card-deck .card-generic {
+  display: block;
+}
 
+.card-generic {
+  display: none;
+}

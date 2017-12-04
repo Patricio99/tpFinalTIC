@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="sticky-footer.css"/>
 <footer class="footer">
       <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
+        <span>TpFinalTIC™ - All rights reserved</span>
       </div>
     </footer>
