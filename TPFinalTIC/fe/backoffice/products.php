@@ -45,8 +45,8 @@ function render() {
               <?php echo $row["Nombre"]; ?>
             </td>
             <td>
-              <a href="Producto-Form.php?id=<?php echo $row["id"]; ?>">Modificar</a>
-              <a href="Producto.Form.php" onclick="return confirm('Are you sure?')"><button>Eliminar</button>
+              <a href="Producto-Modificar.php?id=<?php echo $row["id"]; ?>">Modificar</a>
+              <a href="Producto-Eliminar.php?id=<?php echo $row["id"]; ?>" onclick="return confirm('¿Seguro que desea eliminar el producto?')">Eliminar</a>
             </td>
           </tr>
           <?php

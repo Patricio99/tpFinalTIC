@@ -104,6 +104,7 @@ echo $sql;
     </label>
     <div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    <button class="btn btn-primary">Regresar</button>
   </div>
   </form>
   </body>
