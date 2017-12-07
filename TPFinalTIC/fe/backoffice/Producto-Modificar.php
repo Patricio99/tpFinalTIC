@@ -1,4 +1,5 @@
 <?php
+
 include '../../be/apis/conn.php';
 
 $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
@@ -11,6 +12,7 @@ $result = explode('/', end($c));
 
 $sql = "SELECT idCategoria, Codigo, Nombre, Precio, Destacado, Descripcion, Imagen FROM productos where id=$result[0]";
 
+
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   while($row[] = $result->fetch_assoc()) {
@@ -19,6 +21,14 @@ if ($result->num_rows > 0) {
 } else {
  echo "No hay resultados.";
 }
+
+if ($tem[0]['Destacado'] === "0") {
+  $chequeado = "";
+}
+else {
+  $chequeado ="checked";
+}
+
 ?>
 
 <html>
@@ -40,30 +50,30 @@ if ($result->num_rows > 0) {
   </br>
       <div class="form-group">
         <label for="formGroupExampleInput2">idCategoría</label>
-        <input type="text" class="form-control" name="idCategoria" value="<?php echo $row[0]['idCategoria'];?>">
+        <input type="text" class="form-control" name="idCategoria" value="<?php echo $tem[0]['idCategoria'];?>">
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Código</label>
-        <input type="text" class="form-control" name="Codigo" value="<?php echo $row[0]['Codigo'];?>">
+        <input type="text" class="form-control" name="Codigo" value="<?php echo $tem[0]['Codigo'];?>">
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Nombre</label>
-        <input type="text" class="form-control" name="Nombre" value="<?php echo $row[0]['Nombre'];?>">
+        <input type="text" class="form-control" name="Nombre" value="<?php echo $tem[0]['Nombre'];?>">
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Precio</label>
-        <input type="text" class="form-control" name="Precio" value="<?php echo $row[0]['Precio'];?>">
+        <input type="text" class="form-control" name="Precio" value="<?php echo $tem[0]['Precio'];?>">
       </div>
       <div>
       <label class="custom-control custom-checkbox">
-        <input type="checkbox" name="Destacado" class="custom-control-input" value="true">
+        <input type="checkbox" name="Destacado" class="custom-control-input" value="true" <?php echo $chequeado; ?>>
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Destacado</span>
       </label>
     </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Descripción</label>
-        <input type="text" class="form-control" name="Descripcion" value="<?php echo $row[0]['Descripcion'];?>">
+        <input type="text" class="form-control" name="Descripcion" value="<?php echo $tem[0]['Descripcion'];?>">
       </div>
       <div>
       <label>
@@ -72,8 +82,9 @@ if ($result->num_rows > 0) {
     </label>
   </div>
     <div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <button class="btn btn-primary">Regresar</button>
+    <img src="<?php echo $row[0]['Imagen'];?>" width="42" height="42">
+    <a href="products.php"><button type="submit" class="btn btn-primary">Submit</button></a>
+    <a href="products.php"><button onclick=""class="btn btn-primary">Regresar</button></a>
   </div>
   </form>
   </body>

@@ -14,13 +14,13 @@ function render() {
   }
 
   $id = isset($_GET['id']) ? $_GET['id']:0;
-  $sql = "SELECT id, idCategoria, Codigo, Nombre, Precio, Destacado, Descripcion, Imagen FROM productos where " .
+  $sql = "SELECT id, Nombre FROM categorias where " .
   "(id=" . $id . " or 0=" . $id . ")";
   $result = $conn->query($sql);
 
   $conn->close();
   ?>
-  <a href="Producto-Form.php"><button>Crear</button></a>
+  <a href="Categoria-Form.php"><button>Crear</button></a>
   <table>
     <tr>
       <td>
@@ -45,8 +45,8 @@ function render() {
               <?php echo $row["Nombre"]; ?>
             </td>
             <td>
-              <a href="Producto-Modificar.php?id=<?php echo $row["id"]; ?>">Modificar</a>
-              <a href="Producto-Eliminar.php?id=<?php echo $row["id"]; ?>" onclick="return confirm('¿Seguro que desea eliminar el producto?')">Eliminar</a>
+              <a href="Categoria-Modificar.php?id=<?php echo $row["id"]; ?>">Modificar</a>
+              <a href="Categoria-Eliminar.php?id=<?php echo $row["id"]; ?>" onclick="return confirm('¿Seguro que desea eliminar la categoría?')">Eliminar</a>
             </td>
           </tr>
           <?php
@@ -56,9 +56,8 @@ function render() {
       }
     ?>
   </table>
-
 </br>
-  <a href="categories.php">Ir a categorias</a>
+  <a href="products.php">Ir a productos</a>
   <?php
 }
 ?>

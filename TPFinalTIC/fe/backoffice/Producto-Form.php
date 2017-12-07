@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $Nombre = test_input($_POST["Nombre"]);
   $Precio = test_input($_POST["Precio"]);
   $Descripcion = test_input($_POST["Descripcion"]);
-  $Imagen = $_FILES["Imagen"]["tmp_name"];
+  $Imagen = $_FILES["Imagen"]["name"];
   $Destacado = $_POST["Destacado"];
   $booleano = true;
 
@@ -69,6 +69,8 @@ echo $sql;
 		<link rel="stylesheet" href="../node_modules\tether\dist\css\tether.css"/>
   </head>
   <body>
+  </br>
+  </br>
     <form method="post" action="<?=$_SERVER['PHP_SELF']?>" enctype="multipart/form-data">
       <div class="form-group">
         <label for="formGroupExampleInput2">idCategoría</label>
