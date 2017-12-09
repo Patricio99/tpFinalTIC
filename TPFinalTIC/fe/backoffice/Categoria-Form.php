@@ -27,19 +27,20 @@ if (!empty($_POST)) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
+    if (empty($Nombre)) {
+      $booleano = false;
+    }
+    header('Location: categories.php');
     if($booleano) {
       // lo guardo en la bd
       $sql = "INSERT INTO Categorias (Nombre)
       VALUES ('" . $Nombre . "')";
 
-echo $sql;
-      $result = $conn->query($sql);
+    $result = $conn->query($sql);
 
-      header('Location: categories.php');
-    } else {
-      // show error to users
-    }
+    }else {
+
+  }
 }
 ?>
 <html>

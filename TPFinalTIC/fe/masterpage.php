@@ -2,7 +2,6 @@
 	<head>
 		<link href="./css/index.css"/>
 		<title>
-			Alto gato
 		</title>
 		<script src="node_modules/jquery/dist/jquery.js"></script>
 
