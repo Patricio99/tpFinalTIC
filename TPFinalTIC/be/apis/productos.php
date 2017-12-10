@@ -10,14 +10,18 @@ $action = $_SERVER['REQUEST_METHOD'];
 switch($action) {
   case 'GET':
     $id = isset($_GET['id']) ? $_GET['id']:0;
+    $destacado = isset($_GET['destacados']) ? $_GET['destacados']:0;
+
+
     $sql = "SELECT id, idCategoria, Codigo, Nombre, Precio, Destacado, Descripcion, Imagen FROM productos where " .
-    "(id=" . $id . " or 0=" . $id . ")";
+    "(id=" . $id . " or 0=" . $id . ") AND (Destacado=" . $destacado . " or 0=" . $destacado . ")";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
       while($row[] = $result->fetch_assoc()) {
         $tem = $row;
         $json = json_encode($tem);
       }
+
     } else {
      echo "No hay resultados.";
     }

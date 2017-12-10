@@ -10,17 +10,26 @@ function test_input($data) {
 
   return $data;
 }
-
+var_dump($_FILES);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $idCategoria = test_input($_POST["idCategoria"]);
   $Codigo = test_input($_POST["Codigo"]);
   $Nombre = test_input($_POST["Nombre"]);
   $Precio = test_input($_POST["Precio"]);
   $Descripcion = test_input($_POST["Descripcion"]);
-  $Imagen = $_FILES["Imagen"]["name"];
+  $ImagenName = $_FILES["Imagen"]["name"];
+  $ImagenData = $_FILES["Imagen"]['tmp_name'];
   $Destacado = $_POST["Destacado"];
   $booleano = true;
 
+  $path = "./" . basename($ImagenName);
+  if (move_uploaded_file($ImagenData, $path)) {
+      // Move succeed.
+      echo "yeah";
+  } else {
+      // Move failed. Possible duplicate?
+      echo "No!";
+  }
   if ($Destacado) {
       $Destacado = 1;
   }
@@ -49,7 +58,7 @@ if (!empty($_POST)) {
 echo $sql;
       $result = $conn->query($sql);
 
-      header('Location: products.php');
+      //header('Location: products.php');
     } else {
       // show error to users
     }

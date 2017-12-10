@@ -19,7 +19,7 @@ function render() {
   </div>
   <script>
 
-    getProductList().then((products) => {
+    getProductListForHome().then((products) => {
       let container = $('#cardDeck');
       let genericItem = $('#genericItemCardDeck');
       for (var i = 0; i < products.length; i++) {
