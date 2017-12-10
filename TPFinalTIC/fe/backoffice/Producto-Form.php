@@ -10,7 +10,7 @@ function test_input($data) {
 
   return $data;
 }
-var_dump($_FILES);
+var_dump($_POST);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $idCategoria = test_input($_POST["idCategoria"]);
   $Codigo = test_input($_POST["Codigo"]);
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $Destacado = $_POST["Destacado"];
   $booleano = true;
 
-  $path = "./" . basename($ImagenName);
+  $path = "../images/" . basename($ImagenName);
   if (move_uploaded_file($ImagenData, $path)) {
       // Move succeed.
       echo "yeah";

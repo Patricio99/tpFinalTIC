@@ -69,7 +69,7 @@ else {
   <li class="list-group-item">Precio - <?php echo $tem[0]['Precio'];?></li>
   <li class="list-group-item">Destacado - <?php echo $destaca3;?></li>
   <li class="list-group-item">Descripcion - <?php echo $tem[0]['Descripcion'];?></li>
-  <li class="list-group-item"><img src="<?php echo $row[0]['Imagen'];?>" width="80" height="80"></li>
+  <li class="list-group-item"><div class="product-image"><img src="images/<?php echo $row[0]['Imagen'];?>"></div></li>
 </ul>
 <a href="listaproductos.php">Regresar</a>
 </div>
