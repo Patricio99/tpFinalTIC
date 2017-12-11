@@ -82,8 +82,8 @@ $conn->close();
         <input type="text" class="form-control" name="Nombre" value="<?php echo $tem[0]['Nombre'];?>">
       </div
     <div>
-    <a href="categories.php"><button type="submit" class="btn btn-primary">Submit</button></a>
-    <a href="categories.php"><button onclick=""class="btn btn-primary">Regresar</button></a>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button onclick="javascript:history.go(-1)" type="button" class="btn btn-primary">Regresar</button>
   </div>
   </form>
   </body>
