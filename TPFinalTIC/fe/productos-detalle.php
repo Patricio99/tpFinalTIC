@@ -61,7 +61,7 @@ else {
   <link rel="stylesheet" href="../node_modules\tether\dist\css\tether.css"/>
 </head>
 <body>
-<div class="w-25 p-3">
+<div class="w-25 p-1">
 <ul class="list-group">
   <li class="list-group-item">IdCategoria - <?php echo $tem[0]['idCategoria'];?></li>
   <li class="list-group-item">Codigo - <?php echo $tem[0]['Codigo'];?></li>
@@ -71,6 +71,8 @@ else {
   <li class="list-group-item">Descripcion - <?php echo $tem[0]['Descripcion'];?></li>
   <li class="list-group-item"><div class="product-image"><img src="images/<?php echo $row[0]['Imagen'];?>"></div></li>
 </ul>
+</div>
+<div class="p-1">
 <a href="listaproductos.php">Regresar</a>
 </div>
 </body>

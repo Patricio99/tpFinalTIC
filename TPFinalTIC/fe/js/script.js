@@ -1,6 +1,6 @@
-function getProductList() {
+function getProductList(idCategoria = 0) {
   return new Promise((resolve) => {
-    fetch('http://localhost:8080/apis/productos.php').then((resp) => {
+    fetch('http://localhost:8080/apis/productos.php?idCategoria=' + idCategoria).then((resp) => {
       resp.json().then(function(data) {
         resolve(data);
       });
@@ -33,4 +33,13 @@ function deleteProduct() {
 }
 function updateProduct() {
 
+}
+function getCategoryList(){
+  return new Promise((resolve) => {
+    fetch('http://localhost:8080/apis/categorias.php').then((resp) => {
+      resp.json().then(function(data) {
+        resolve(data);
+      });
+    })
+  });
 }

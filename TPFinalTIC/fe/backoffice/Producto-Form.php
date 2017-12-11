@@ -1,5 +1,4 @@
 <?php
-
 $idCategoria = $Codigo = $Nombre = $Precio = $Destacado = $Descripcion = $Imagen = "";
 $booleano = false;
 
@@ -10,7 +9,7 @@ function test_input($data) {
 
   return $data;
 }
-var_dump($_POST);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $idCategoria = test_input($_POST["idCategoria"]);
   $Codigo = test_input($_POST["Codigo"]);
@@ -53,12 +52,11 @@ if (!empty($_POST)) {
     if($booleano) {
       // lo guardo en la bd
       $sql = "INSERT INTO Productos (idCategoria, Codigo, Nombre, Precio, Destacado, Descripcion, Imagen)
-      VALUES (".$idCategoria.", ".$Codigo.", '" . $Nombre . "', " . $Precio . ", " . $Destacado . ", '" . $Descripcion. "', '" . $Imagen . "')";
+      VALUES (".$idCategoria.", ".$Codigo.", '" . $Nombre . "', " . $Precio . ", " . $Destacado . ", '" . $Descripcion. "', '" . $ImagenName . "')";
 
-echo $sql;
       $result = $conn->query($sql);
 
-      //header('Location: products.php');
+      header('Location: products.php');
     } else {
       // show error to users
     }
@@ -80,43 +78,44 @@ echo $sql;
   <body>
   </br>
   </br>
-    <form method="post" action="<?=$_SERVER['PHP_SELF']?>" enctype="multipart/form-data">
+    <form method="POST" action="Producto-Form.php" enctype="multipart/form-data">
       <div class="form-group">
         <label for="formGroupExampleInput2">idCategoría</label>
-        <input type="text" class="form-control" name="idCategoria" placeholder="idCategoría">
+        <input type="text" class="form-control" name="idCategoria" placeholder="idCategoría" />
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Código</label>
-        <input type="text" class="form-control" name="Codigo" placeholder="Código">
+        <input type="text" class="form-control" name="Codigo" placeholder="Código" />
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Nombre</label>
-        <input type="text" class="form-control" name="Nombre" placeholder="Nombre">
+        <input type="text" class="form-control" name="Nombre" placeholder="Nombre" />
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Precio</label>
-        <input type="text" class="form-control" name="Precio" placeholder="Precio">
+        <input type="text" class="form-control" name="Precio" placeholder="Precio" />
       </div>
       <div>
       <label class="custom-control custom-checkbox">
-        <input type="checkbox" name="Destacado" class="custom-control-input" value="true">
+        <input type="checkbox" name="Destacado" class="custom-control-input" value="true" />
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Destacado</span>
       </label>
     </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput2">Descripción</label>
-        <input type="text" class="form-control" name="Descripcion" placeholder="Descripción ">
-      </div>
-      <div>
-      <label>
-        <input type="file" name="Imagen">
-        <span class="custom-file-control"></span>
-    </label>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Descripción</label>
+      <input type="text" class="form-control" name="Descripcion" placeholder="Descripción " />
+    </div>
     <div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <button class="btn btn-primary">Regresar</button>
-  </div>
+      <label>
+          <input type="file" name="Imagen" />
+          <span class="custom-file-control"></span>
+      </label>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <a href="products.php"><button type="button" class="btn btn-primary">Regresar</button></a>
+    </div>
   </form>
   </body>
 </html>

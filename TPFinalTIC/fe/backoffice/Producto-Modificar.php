@@ -1,16 +1,76 @@
 <?php
 
-include '../../be/apis/conn.php';
+$idCategoria = $Codigo = $Nombre = $Precio = $Destacado = $Descripcion = $Imagen = "";
+$booleano = false;
 
-$conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
-if ($conn->connect_error) {
- die("Conneccion Falllida: " . $conn->connect_error);
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+
+  return $data;
 }
 
-$c = explode('=',$_SERVER[ 'REQUEST_URI' ]);
-$result = explode('/', end($c));
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $idCategoria = test_input($_POST["idCategoria"]);
+    $Codigo = test_input($_POST["Codigo"]);
+    $Nombre = test_input($_POST["Nombre"]);
+    $Precio = test_input($_POST["Precio"]);
+    $Descripcion = test_input($_POST["Descripcion"]);
+    if ($_FILES["Imagen"]["name"] != "") {
+      $ImagenName = $_FILES["Imagen"]["name"];
+      $ImagenData = $_FILES["Imagen"]['tmp_name'];
+    }
+    else {
+      $ImagenName = $_POST["imgVieja"];
+    }
+    $Destacado = $_POST["Destacado"];
+    $booleano = true;
 
-$sql = "SELECT idCategoria, Codigo, Nombre, Precio, Destacado, Descripcion, Imagen FROM productos where id=$result[0]";
+    $path = "../images/" . basename($ImagenName);
+    if (move_uploaded_file($ImagenData, $path)) {
+      echo "yeah";
+    }
+    else {
+      echo "No!";
+    }
+    if ($Destacado) {
+      $Destacado = 1;
+    }
+    else {
+      $Destacado = 0;
+    }
+}
+
+include '../../be/apis/conn.php';
+$c = explode('=',$_SERVER[ 'REQUEST_URI' ]);
+$results = explode('/', end($c));
+
+if (!empty($_POST)) {
+    // handle post data
+
+    // Create connection
+    $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    if($booleano) {
+      // lo guardo en la bd
+      $sql = "UPDATE Productos SET idCategoria=$idCategoria, Codigo=$Codigo, Nombre='$Nombre', Precio=$Precio, Destacado=$Destacado, Descripcion= '$Descripcion', Imagen='$ImagenName' WHERE id=$results[0]";
+      echo $sql;
+
+      $result = $conn->query($sql);
+
+      header('Location: products.php');
+    } else {
+      // show error to users
+    }
+}
+if (!$booleano) {
+
+$sql = "SELECT idCategoria, Codigo, Nombre, Precio, Destacado, Descripcion, Imagen FROM productos where id=$results[0]";
 
 
 $result = $conn->query($sql);
@@ -28,7 +88,7 @@ if ($tem[0]['Destacado'] === "0") {
 else {
   $chequeado ="checked";
 }
-
+}
 ?>
 
 <html>
@@ -45,7 +105,7 @@ else {
 		<link rel="stylesheet" href="../node_modules\tether\dist\css\tether.css"/>
   </head>
   <body>
-    <form method="post" action="<?=$_SERVER['PHP_SELF']?>" enctype="multipart/form-data">
+    <form method="post" action="<?=$_SERVER['PHP_SELF']?>?id=<?=$results[0];?>" enctype="multipart/form-data">
     </br>
   </br>
       <div class="form-group">
@@ -82,10 +142,11 @@ else {
     </label>
   </div>
     <div>
-    <img src="<?php echo $row[0]['Imagen'];?>" width="42" height="42">
+    <img src="../images/<?php echo $tem[0]['Imagen'];?>" width="42" height="42">
     <a href="products.php"><button type="submit" class="btn btn-primary">Submit</button></a>
-    <a href="products.php"><button onclick=""class="btn btn-primary">Regresar</button></a>
+    <a href="products.php"><button type="button" class="btn btn-primary">Regresar</button></a>
   </div>
+  <input type="hidden" value="<?php echo $tem[0]['Imagen']?>" name="imgVieja"/>
   </form>
   </body>
 </html>

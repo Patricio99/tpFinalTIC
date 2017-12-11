@@ -20,8 +20,8 @@ include 'components/header.php';
     <h4 class="card-title">Especialista en crear catalogos de productos a medida para empresas</h4>
     <p class="card-text">Para mas información de Patricio contactelo mediante sus redes sociales.</p>
     <a href="https://www.facebook.com/patonaveira" target="_blank" class="btn btn-primary">Facebook</a>
-    <a href="https://twitter.com/PatricioNaveira" target="_blank" class="btn btn-primary">Instagram</a>
-    <a href="https://www.instagram.com/patonaveira/" target="_blank" class="btn btn-primary">Twitter</a>
+    <a href="https://www.instagram.com/patonaveira/" target="_blank" class="btn btn-primary">Instagram</a>
+    <a href="https://twitter.com/PatricioNaveira" target="_blank" class="btn btn-primary">Twitter</a>
 
   </div>
 </div>
