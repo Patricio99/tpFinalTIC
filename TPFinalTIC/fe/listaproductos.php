@@ -68,7 +68,7 @@ function render() {
 
           newContainer.find('.card-img-top')[0].setAttribute('src', 'images/' + products[i].Imagen);
 
-          newContainer.find('.view-detail')[0].setAttribute('href', '/productos-detalle.php?idproducto=' + products[i].id);
+          newContainer.find('.view-detail')[0].setAttribute('href', '../fe/productos-detalle.php?idproducto=' + products[i].id);
 
           newContainer.appendTo(container);
         }

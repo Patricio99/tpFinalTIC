@@ -62,7 +62,7 @@ if (!empty($_POST)) {
     <form method="post" action="<?=$_SERVER['PHP_SELF']?>" enctype="multipart/form-data">
       <div class="form-group">
         <label for="formGroupExampleInput2">Nombre</label>
-        <input type="text" class="form-control" name="Nombre" placeholder="Nombre" required>
+        <input type="text" class="form-control" name="Nombre" placeholder="Nombre" required/>
       </div>
     <div>
     <button type="submit" class="btn btn-primary">Submit</button>

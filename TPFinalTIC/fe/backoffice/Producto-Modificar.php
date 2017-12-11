@@ -110,19 +110,19 @@ else {
   </br>
       <div class="form-group">
         <label for="formGroupExampleInput2">idCategoría</label>
-        <input type="text" class="form-control" name="idCategoria" value="<?php echo $tem[0]['idCategoria'];?>">
+        <input type="number" class="form-control" name="idCategoria" value="<?php echo $tem[0]['idCategoria'];?>" required/>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Código</label>
-        <input type="text" class="form-control" name="Codigo" value="<?php echo $tem[0]['Codigo'];?>">
+        <input type="number" class="form-control" name="Codigo" value="<?php echo $tem[0]['Codigo'];?>" required/>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Nombre</label>
-        <input type="text" class="form-control" name="Nombre" value="<?php echo $tem[0]['Nombre'];?>">
+        <input type="text" class="form-control" name="Nombre" value="<?php echo $tem[0]['Nombre'];?>" required/>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Precio</label>
-        <input type="text" class="form-control" name="Precio" value="<?php echo $tem[0]['Precio'];?>">
+        <input type="number" class="form-control" name="Precio" value="<?php echo $tem[0]['Precio'];?>" required/>
       </div>
       <div>
       <label class="custom-control custom-checkbox">
@@ -133,7 +133,7 @@ else {
     </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Descripción</label>
-        <input type="text" class="form-control" name="Descripcion" value="<?php echo $tem[0]['Descripcion'];?>">
+        <input type="text" class="form-control" name="Descripcion" value="<?php echo $tem[0]['Descripcion'];?>" required/>
       </div>
       <div>
       <label>

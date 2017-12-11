@@ -1,10 +1,12 @@
 <?php
-include 'masterpage.php';
+session_start();
 
+include 'masterpage.php';
 
 
 function render() {
 
+  if ($_SESSION['login'] === 'verde') {
   include '../../be/apis/conn.php';
 
 
@@ -60,4 +62,9 @@ function render() {
   <a href="products.php">Ir a productos</a>
   <?php
 }
+else {
+  header("Location:http://localhost/tpFinalTIC/tpfinaltic/fe/backoffice/login.php");
+}
+}
+
 ?>

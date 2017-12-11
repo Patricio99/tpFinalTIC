@@ -79,7 +79,7 @@ $conn->close();
       <div class="form-group">
         <input type="hidden" name="id" value="<?php echo $tem[0]['id']; ?>">
         <label for="formGroupExampleInput2">Nombre</label>
-        <input type="text" class="form-control" name="Nombre" value="<?php echo $tem[0]['Nombre'];?>">
+        <input type="text" class="form-control" name="Nombre" value="<?php echo $tem[0]['Nombre'];?>" required />
       </div
     <div>
     <button type="submit" class="btn btn-primary">Submit</button>

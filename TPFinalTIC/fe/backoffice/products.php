@@ -1,10 +1,11 @@
 <?php
+session_start();
+
+
 include 'masterpage.php';
 
-
-
 function render() {
-
+if ($_SESSION['login'] === 'verde') {
   include '../../be/apis/conn.php';
 
 
@@ -19,6 +20,7 @@ function render() {
   $result = $conn->query($sql);
 
   $conn->close();
+
   ?>
   <a href="Producto-Form.php"><button>Crear</button></a>
   <table>
@@ -61,4 +63,9 @@ function render() {
   <a href="categories.php">Ir a categorias</a>
   <?php
 }
+else{
+  header("Location:http://localhost/tpFinalTIC/tpfinaltic/fe/backoffice/login.php");
+}
+}
+
 ?>
