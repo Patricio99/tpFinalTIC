@@ -81,19 +81,19 @@ if (!empty($_POST)) {
     <form method="POST" action="Producto-Form.php" enctype="multipart/form-data">
       <div class="form-group">
         <label for="formGroupExampleInput2">idCategoría</label>
-        <input type="text" class="form-control" name="idCategoria" placeholder="idCategoría" />
+        <input type="number" class="form-control" name="idCategoria" placeholder="idCategoría" required/>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Código</label>
-        <input type="text" class="form-control" name="Codigo" placeholder="Código" />
+        <input type="number" class="form-control" name="Codigo" placeholder="Código" required/>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Nombre</label>
-        <input type="text" class="form-control" name="Nombre" placeholder="Nombre" />
+        <input type="text" class="form-control" name="Nombre" placeholder="Nombre" required/>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Precio</label>
-        <input type="text" class="form-control" name="Precio" placeholder="Precio" />
+        <input type="number" class="form-control" name="Precio" placeholder="Precio" required/>
       </div>
       <div>
       <label class="custom-control custom-checkbox">
@@ -104,11 +104,11 @@ if (!empty($_POST)) {
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Descripción</label>
-      <input type="text" class="form-control" name="Descripcion" placeholder="Descripción " />
+      <input type="text" class="form-control" name="Descripcion" placeholder="Descripción" required/>
     </div>
     <div>
       <label>
-          <input type="file" name="Imagen" />
+          <input type="file" name="Imagen" required/>
           <span class="custom-file-control"></span>
       </label>
     </div>
