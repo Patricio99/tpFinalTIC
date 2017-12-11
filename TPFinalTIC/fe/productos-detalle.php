@@ -73,6 +73,6 @@ else {
 </ul>
 </div>
 <div class="p-1">
-<a href="listaproductos.php">Regresar</a>
+<a href="javascript:history.go(-1)">Regresar</a>
 </div>
 </body>
